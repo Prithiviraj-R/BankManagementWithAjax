@@ -1,0 +1,38 @@
+@charset "UTF-8";
+div
+{
+float:left;
+}
+
+
+form.sidebar
+{
+	width:500px;
+	box-shadow:0 8px 32px 0 rgba(31,38,135,.37);
+	border-radius:30px;
+	background:rgb(246, 240, 220);
+	border-left:1px solid rgba(255,255,255,.4);
+	border-right:1px solid rgba(255,255,255,.4);
+	border-top:1px solid rgba(255,255,255,.4);
+	border-bottom:1px solid rgba(255,255,255,.4);
+	text-align:center;
+}
+
+body
+{
+  background:rgb(246, 240, 220);
+}
+button
+{
+	width:50%;
+	margin:3% auto;
+	color:black;
+	font-size:15px;
+	opacity:.7;
+	background:#F2882F;
+	padding:10px;
+	border:none;
+	outline:none;
+	border-radius:20px;
+	box-shadow:3px 3px 5px rgba(31,38,135,.37)
+}
