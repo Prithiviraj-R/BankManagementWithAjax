@@ -242,6 +242,8 @@ public class LogicLayer
     {
     	preLoadAccountMap();
     	
+    	System.out.println("I am in Server Side Bank Logic");
+    	
     	return cacheObj.getAllAccount();
     }
     

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 import com.google.gson.Gson;
 
 import Details.AccountDetails;
@@ -37,7 +39,8 @@ public class AccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		LogicLayer obj=(LogicLayer) request.getServletContext().getAttribute("Object");
+//		LogicLayer obj=(LogicLayer) request.getServletContext().getAttribute("Object");
+		LogicLayer obj=new LogicLayer(false);
 		HttpSession session=request.getSession();
 		if(session.getAttribute("lastId")==null)
 		{
@@ -47,8 +50,10 @@ public class AccountServlet extends HttpServlet {
 		try
 		{
 			Map<Integer,Map<Long,AccountDetails>> accountMap=obj.getAllAccount();
-			response.setContentType("application/json");
-			response.getWriter().write(new Gson().toJson(accountMap));
+			System.out.println(accountMap);
+			response.getWriter().write(new ObjectMapper().writeValueAsString(accountMap));
+//			response.setContentType("application/json");
+//			response.getWriter().write(new Gson().toJson(accountMap));
 //			request.setAttribute("AccountMap", accountMap);
 //			RequestDispatcher disp=request.getRequestDispatcher("Account.jsp");
 //			disp.forward(request, response);
@@ -63,30 +68,30 @@ public class AccountServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		LogicLayer obj=(LogicLayer) request.getServletContext().getAttribute("Object");
-		HttpSession session=request.getSession();
-		if(session.getAttribute("lastId")==null)
-		{
-			RequestDispatcher rd=request.getRequestDispatcher("login.jsp");  
-            rd.forward(request, response);
-		}
-		try
-		{
-			Map<Integer,Map<Long,AccountDetails>> accountMap=obj.getAllAccount();
-			response.setContentType("application/json");
-			response.getWriter().write(new Gson().toJson(accountMap));
-//			request.setAttribute("AccountMap", accountMap);
-//			RequestDispatcher disp=request.getRequestDispatcher("Account.jsp");
-//			disp.forward(request, response);
-		}
-		catch(MistakeOccuredException ex)
-		{
-			ex.getMessage();
-		}
-		
-		doGet(request, response);
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		LogicLayer obj=(LogicLayer) request.getServletContext().getAttribute("Object");
+//		HttpSession session=request.getSession();
+//		if(session.getAttribute("lastId")==null)
+//		{
+//			RequestDispatcher rd=request.getRequestDispatcher("login.jsp");  
+//            rd.forward(request, response);
+//		}
+//		try
+//		{
+//			Map<Integer,Map<Long,AccountDetails>> accountMap=obj.getAllAccount();
+////			response.setContentType("application/json");
+//			response.getWriter().write(new ObjectMapper().writeValueAsString(accountMap));
+////			request.setAttribute("AccountMap", accountMap);
+////			RequestDispatcher disp=request.getRequestDispatcher("Account.jsp");
+////			disp.forward(request, response);
+//		}
+//		catch(MistakeOccuredException ex)
+//		{
+//			ex.getMessage();
+//		}
+//		
+//		doGet(request, response);
+//	}
 
 }
