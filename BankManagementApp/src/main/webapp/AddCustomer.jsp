@@ -135,7 +135,7 @@ $("#button").click(function()
 {
 	console.log($("#name").val());
 var set={
-		'name':$("#name").val(),
+		'naaame':$("#name").val(),
         'dob':$("#dob").val(),
         'address':$("#address").val(),
         'phone':$("#phone").val(),
@@ -162,12 +162,29 @@ var set={
 // 	    			  }
 // 	    		  }
 // 	    		 );
-		$.post( "Add?action=customer", set ,function( data ) {
- 			 $( "#result" ).html( data ).css({
- 				'font-weight' : 'bold',
- 			   	'color' : 'green',
- 			 });
-			});
+		$.post( "Add?action=customer", set ,function( data ) 
+				{
+			        console.log(data.responseText);
+			        if(data=="Sucessfully inserted")
+			        	{
+				        	$( "#result" ).html( data ).css({
+				 				'font-weight' : 'bold',
+				 			   	'color' : 'green',
+				 			 });
+			        	}
+			        else
+			        	{
+			        	console.log("Error");
+			        	$( "#result" ).html( "ERROR" ).css({
+			 				'font-weight' : 'bold',
+			 			   	'color' : 'red',
+			 			 });
+			        	}
+			 			 
+				}).fail(function()
+						{
+							console.log("Error");
+						});
 	      event.preventDefault();
 			return;
 	      }

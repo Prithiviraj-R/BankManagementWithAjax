@@ -15,10 +15,11 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import logic_With_persistence.LogicLayer;
-import Details.AccountDetails;
-import Details.Customer;
 import newexception.MistakeOccuredException;
 import util.HelperUtil;
+import Details.AccountDetails;
+import Details.Customer;
+
 
 /**
  * Servlet implementation class AddCustomer
@@ -89,10 +90,11 @@ public class Add extends HttpServlet {
 	   catch(MistakeOccuredException ex)
 	   {
 		   ex.printStackTrace();
-		   System.out.println("Error in Exception Area");
-		   request.setAttribute("message",ex.getMessage());
-		   RequestDispatcher disp=request.getRequestDispatcher("AddCustomer.jsp");
-		   disp.forward(request, response);
+//		   System.out.println("Error in Exception Area");
+//		   request.setAttribute("message",ex.getMessage());
+//		   RequestDispatcher disp=request.getRequestDispatcher("AddCustomer.jsp");
+//		   disp.forward(request, response);
+		   response.getWriter().write("FAILED");
 	   }
 //	   }
 //	   else if(request.getParameter("action").equals("Account"))
